@@ -16,6 +16,8 @@ namespace FarmInterface
         public double Width { get; set; }
         public double Height { get; set; }
 
+        public ElementalUnit Parent { get; set; }
+
         public void ChangeHeight(double newHeight)
         {
             Height = newHeight;

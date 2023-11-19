@@ -11,6 +11,7 @@ namespace FarmInterface
         public List<ElementalUnit> Children { get; private set; } = new List<ElementalUnit>();
 
         public void AddItem(ElementalUnit item) {
+            item.Parent = this;
             Children.Add(item);         
         }
 

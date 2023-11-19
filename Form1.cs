@@ -13,11 +13,16 @@ namespace FarmInterface
     public partial class Form1 : Form
     {
         private ItemContainer rootContainer = new ItemContainer { Name = "root" };
+
+
+
         public Form1()
         {
             InitializeComponent();
 
-            farmComponents.Text = "root";
+            //farmComponents.Text = "root";
+            TreeNode rootNode = new TreeNode("root");
+            treeView.Nodes.Add(rootNode);
 
         }
 
@@ -57,12 +62,16 @@ namespace FarmInterface
 
         private void populate_Click(object sender, EventArgs e)
         {
-            farmComponents.Clear();
-            Testing.PopulateBarnTest(rootContainer);                
-            DisplayTest(rootContainer, 0, farmComponents);
+            //farmComponents.Clear();
+            treeView.Nodes.Clear();
+            PopulateTest();
+            PopulateTreeView(rootContainer, treeView.Nodes);
+
+            //Testing.PopulateBarnTest(rootContainer);                
+            //DisplayTest(rootContainer, 0, farmComponents);
         }
 
-        private void DisplayTest(ElementalUnit unit, int level, TextBox textBox)
+/*        private void DisplayTest(ElementalUnit unit, int level, TextBox textBox)
         {
             textBox.AppendText(Environment.NewLine + new string(' ', level * 2) + unit.Name);
 
@@ -72,6 +81,45 @@ namespace FarmInterface
                 {
                     DisplayTest(child, level + 1, textBox);
                 }
+            }
+        }*/
+
+        private void PopulateTreeView(ElementalUnit unit, TreeNodeCollection nodes)
+        {
+            TreeNode newNode = nodes.Add(unit.Name);
+            newNode.Tag = unit; // Storing the ElementalUnit object in the Tag property
+
+            if (unit is ItemContainer container)
+            {
+                foreach (var child in container.Children)
+                {
+                    PopulateTreeView(child, newNode.Nodes);
+                }
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            //what treeView
+            if (treeView.SelectedNode != null)
+            {
+                ElementalUnit selectedUnit = treeView.SelectedNode.Tag as ElementalUnit;
+                // Implement the logic to delete the selectedUnit from its parent
+                // Update the TreeView
+                treeView.Nodes.Remove(treeView.SelectedNode);
+            }
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            if (treeView.SelectedNode != null)
+            {
+                ElementalUnit selectedUnit = treeView.SelectedNode.Tag as ElementalUnit;
+/*                EditForm editForm = new EditForm(selectedUnit);
+                editForm.ShowDialog();*/
+
+                // After editing, update the TreeView if necessary
+                treeView.SelectedNode.Text = selectedUnit.Name;
             }
         }
     }

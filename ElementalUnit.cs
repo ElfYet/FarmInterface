@@ -19,6 +19,8 @@ namespace FarmInterface
         double Width { get; set; }
         double Height { get; set; }
 
+        ElementalUnit Parent { get; set; }
+
         //Common methods of our composite pattern
         void ChangeName(string newName);
         void ChangePrice(decimal newPrice);
