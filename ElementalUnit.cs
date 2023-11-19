@@ -24,7 +24,7 @@ namespace FarmInterface
         //Common methods of our composite pattern
         void ChangeName(string newName);
         void ChangePrice(decimal newPrice);
-        void Delete();
+        void Delete(ElementalUnit unit);
         void ChangeLocationX(int newLocation);
         void ChangeLocationY(int newLocation);
         void ChangeLength(double newLength);

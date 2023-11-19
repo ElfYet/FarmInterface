@@ -15,6 +15,24 @@ namespace FarmInterface
             Children.Add(item);         
         }
 
+        public override void Delete(ElementalUnit unit)
+        {
+            if (unit == this && unit.Parent != null)
+            {
+                foreach (var child in Children.ToList())
+                {
+                    ((ItemContainer) Parent).AddItem(child);
+                    child.Parent = Parent;
+                }
+                Parent.Delete(this);
+            }
+
+            else
+            {
+                Children.Remove(unit);
+            }
+        }
+
         //This method is unnecessary, since polymorphism allows each container to be treated like an item
         /*
                 public void AddContainer(ItemContainer container)

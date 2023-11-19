@@ -106,8 +106,17 @@ namespace FarmInterface
                 ElementalUnit selectedUnit = treeView.SelectedNode.Tag as ElementalUnit;
                 // Implement the logic to delete the selectedUnit from its parent
                 // Update the TreeView
+
+                if (selectedUnit.Parent != null)
+                {
+                    selectedUnit.Delete(selectedUnit);
+                }
+
                 treeView.Nodes.Remove(treeView.SelectedNode);
             }
+
+            treeView.Nodes.Clear();
+            PopulateTreeView(rootContainer, treeView.Nodes);
         }
 
         private void editButton_Click(object sender, EventArgs e)

@@ -53,9 +53,9 @@ namespace FarmInterface
             Width = newWidth;
         }
 
-        public virtual void Delete()
+        public virtual void Delete(ElementalUnit unit)
         {
-            // Implementation for deleting the item
+            Parent?.Delete(unit);
         }
     }
 }
