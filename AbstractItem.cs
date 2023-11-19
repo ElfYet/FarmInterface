@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FarmInterface
 {
-    internal class AbstractItem : ElementalUnit
+    public class AbstractItem : ElementalUnit
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

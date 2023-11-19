@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FarmInterface
 {
-    internal class ItemContainer : AbstractItem
+    public class ItemContainer : AbstractItem
     {
         public List<ElementalUnit> Children { get; private set; } = new List<ElementalUnit>();
 

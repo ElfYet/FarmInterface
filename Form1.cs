@@ -124,8 +124,8 @@ namespace FarmInterface
             if (treeView.SelectedNode != null)
             {
                 ElementalUnit selectedUnit = treeView.SelectedNode.Tag as ElementalUnit;
-/*                EditForm editForm = new EditForm(selectedUnit);
-                editForm.ShowDialog();*/
+                EditForm editForm = new EditForm(selectedUnit);
+                editForm.ShowDialog();
 
                 // After editing, update the TreeView if necessary
                 treeView.SelectedNode.Text = selectedUnit.Name;

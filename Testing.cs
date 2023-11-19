@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FarmInterface
 {
-    internal class Testing
+    public class Testing
     {
 
         public static void PopulateBarnTest(ItemContainer rootContainer)

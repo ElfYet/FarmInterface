@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FarmInterface
 {
-    internal interface ElementalUnit
+    public interface ElementalUnit
     {
 
         //Common properties of our composite pattern
