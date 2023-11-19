@@ -33,13 +33,14 @@
             this.treeView = new System.Windows.Forms.TreeView();
             this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.placeholderPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 38);
+            this.label1.Location = new System.Drawing.Point(50, 23);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 25);
@@ -58,14 +59,14 @@
             // 
             // treeView
             // 
-            this.treeView.Location = new System.Drawing.Point(12, 75);
+            this.treeView.Location = new System.Drawing.Point(26, 51);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(169, 282);
+            this.treeView.Size = new System.Drawing.Size(212, 282);
             this.treeView.TabIndex = 10;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(106, 383);
+            this.deleteButton.Location = new System.Drawing.Point(163, 362);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 11;
@@ -76,7 +77,7 @@
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(12, 383);
+            this.editButton.Location = new System.Drawing.Point(26, 362);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(75, 23);
             this.editButton.TabIndex = 12;
@@ -84,14 +85,24 @@
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
+            // placeholderPanel
+            // 
+            this.placeholderPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.placeholderPanel.Location = new System.Drawing.Point(304, 23);
+            this.placeholderPanel.Name = "placeholderPanel";
+            this.placeholderPanel.Size = new System.Drawing.Size(600, 800);
+            this.placeholderPanel.TabIndex = 13;
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(688, 545);
+            this.ClientSize = new System.Drawing.Size(999, 848);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.populate);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.placeholderPanel);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -105,6 +116,7 @@
         private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Panel placeholderPanel;
     }
 }
 

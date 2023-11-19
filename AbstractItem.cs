@@ -18,39 +18,15 @@ namespace FarmInterface
 
         public ElementalUnit Parent { get; set; }
 
-        public void ChangeHeight(double newHeight)
+        protected AbstractItem(string name, decimal price, int locationX, int locationY, double length, double width, double height)
         {
-            Height = newHeight;
-        }
-
-        public void ChangeLength(double newLength)
-        {
-            Length = newLength;
-        }
-
-        public void ChangeLocationX(int newLocation)
-        {
-            LocationX = newLocation;
-        }
-
-        public void ChangeLocationY(int newLocation)
-        {
-            LocationY = newLocation;
-        }
-
-        public virtual void ChangeName(string newName)
-        {
-            Name = newName;
-        }
-
-        public virtual void ChangePrice(decimal newPrice)
-        {
-            Price = newPrice;
-        }
-
-        public void ChangeWidth(double newWidth)
-        {
-            Width = newWidth;
+            Name = name;
+            Price = price;
+            LocationX = locationX;
+            LocationY = locationY;
+            Length = length;
+            Width = width;
+            Height = height;
         }
 
         public virtual void Delete(ElementalUnit unit)

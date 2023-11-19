@@ -12,7 +12,8 @@ namespace FarmInterface
 {
     public partial class Form1 : Form
     {
-        private ItemContainer rootContainer = new ItemContainer { Name = "root" };
+        private ItemContainer rootContainer = new ItemContainer("root", 0.00m, 0, 0, 0, 0, 0);
+        private FarmPanel farmPanel;
 
 
 
@@ -24,65 +25,28 @@ namespace FarmInterface
             TreeNode rootNode = new TreeNode("root");
             treeView.Nodes.Add(rootNode);
 
-        }
+            //Replaces the placeholder panel displayed in design with the custom farmPanel
+            farmPanel = new FarmPanel
+            {
 
+                Size = placeholderPanel.Size, 
+                Location = placeholderPanel.Location, 
+                BorderStyle = BorderStyle.Fixed3D 
+            };
+            this.Controls.Remove(placeholderPanel);
+            this.Controls.Add(farmPanel);
 
-        private void PopulateTest()
-        {
-            var barn = new ItemContainer { Name = "Barn" };
-            rootContainer.AddItem(barn);
-
-            var livestockArea = new ItemContainer { Name = "Livestock-Area" };
-            barn.AddItem(livestockArea);
-
-            var cow = new Item { Name = "Cow" };
-            livestockArea.AddItem(cow);
-
-            var milkstorage = new Item { Name = "Milk Storage" };
-            barn.AddItem(milkstorage);
-
-            var storageBuilding = new ItemContainer { Name = "Storage Building" };
-            rootContainer.AddItem(storageBuilding);
-
-            var tractor = new Item { Name = "Tractor" };
-            storageBuilding.AddItem(tractor);
-
-            var tiller = new Item { Name = "Tiller" };
-            storageBuilding.AddItem(tiller);
-
-            var commandCenter = new ItemContainer { Name = "Command Center" };
-            rootContainer.AddItem(commandCenter);
-
-            var drone = new Item { Name = "Drone" };
-            commandCenter.AddItem(drone);
-
-            var soyCrop = new Item { Name = "Soy Crop" };
-            rootContainer.AddItem(soyCrop);
+            farmPanel.RootContainer = rootContainer;
         }
 
         private void populate_Click(object sender, EventArgs e)
         {
-            //farmComponents.Clear();
             treeView.Nodes.Clear();
-            PopulateTest();
+            Testing.PopulateBarnTest(rootContainer);
             PopulateTreeView(rootContainer, treeView.Nodes);
-
-            //Testing.PopulateBarnTest(rootContainer);                
-            //DisplayTest(rootContainer, 0, farmComponents);
+            farmPanel.Invalidate();
         }
 
-/*        private void DisplayTest(ElementalUnit unit, int level, TextBox textBox)
-        {
-            textBox.AppendText(Environment.NewLine + new string(' ', level * 2) + unit.Name);
-
-            if (unit is ItemContainer container)
-            {
-                foreach (var child in container.Children)
-                {
-                    DisplayTest(child, level + 1, textBox);
-                }
-            }
-        }*/
 
         private void PopulateTreeView(ElementalUnit unit, TreeNodeCollection nodes)
         {
@@ -113,6 +77,8 @@ namespace FarmInterface
                 }
 
                 treeView.Nodes.Remove(treeView.SelectedNode);
+
+                farmPanel.Invalidate();
             }
 
             treeView.Nodes.Clear();
@@ -130,6 +96,7 @@ namespace FarmInterface
                 // After editing, update the TreeView if necessary
                 treeView.SelectedNode.Text = selectedUnit.Name;
             }
+            farmPanel.Invalidate();
         }
     }
 }

@@ -54,6 +54,9 @@
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ElementalUnit.cs" />
+    <Compile Include="FarmPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
