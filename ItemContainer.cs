@@ -36,14 +36,5 @@ namespace FarmInterface
             }
         }
 
-        //This method is unnecessary, since polymorphism allows each container to be treated like an item
-        /*
-                public void AddContainer(ItemContainer container)
-                {
-                    Children.Add(container);
-                }
-        */
-
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace FarmInterface
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,13 +34,15 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.placeholderPanel = new System.Windows.Forms.Panel();
+            this.treeExpand = new System.Windows.Forms.CheckBox();
+            this.addButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 23);
+            this.label1.Location = new System.Drawing.Point(76, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 25);
@@ -49,7 +51,7 @@
             // 
             // populate
             // 
-            this.populate.Location = new System.Drawing.Point(28, 490);
+            this.populate.Location = new System.Drawing.Point(55, 459);
             this.populate.Name = "populate";
             this.populate.Size = new System.Drawing.Size(114, 32);
             this.populate.TabIndex = 9;
@@ -59,14 +61,14 @@
             // 
             // treeView
             // 
-            this.treeView.Location = new System.Drawing.Point(26, 51);
+            this.treeView.Location = new System.Drawing.Point(26, 68);
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(212, 282);
             this.treeView.TabIndex = 10;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(163, 362);
+            this.deleteButton.Location = new System.Drawing.Point(190, 379);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 11;
@@ -77,7 +79,7 @@
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(26, 362);
+            this.editButton.Location = new System.Drawing.Point(109, 379);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(75, 23);
             this.editButton.TabIndex = 12;
@@ -88,14 +90,37 @@
             // placeholderPanel
             // 
             this.placeholderPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.placeholderPanel.Location = new System.Drawing.Point(304, 23);
+            this.placeholderPanel.Location = new System.Drawing.Point(304, 65);
             this.placeholderPanel.Name = "placeholderPanel";
             this.placeholderPanel.Size = new System.Drawing.Size(600, 800);
             this.placeholderPanel.TabIndex = 13;
             // 
-            // Form1
+            // treeExpand
             // 
-            this.ClientSize = new System.Drawing.Size(999, 848);
+            this.treeExpand.AutoSize = true;
+            this.treeExpand.Location = new System.Drawing.Point(26, 353);
+            this.treeExpand.Name = "treeExpand";
+            this.treeExpand.Size = new System.Drawing.Size(107, 20);
+            this.treeExpand.TabIndex = 14;
+            this.treeExpand.Text = "Expand Tree";
+            this.treeExpand.UseVisualStyleBackColor = true;
+            this.treeExpand.CheckedChanged += new System.EventHandler(this.treeExpand_CheckedChanged);
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(26, 379);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 15;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // MainForm
+            // 
+            this.ClientSize = new System.Drawing.Size(999, 905);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.treeExpand);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.treeView);
@@ -103,7 +128,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.placeholderPanel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,6 +142,8 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Panel placeholderPanel;
+        private System.Windows.Forms.CheckBox treeExpand;
+        private System.Windows.Forms.Button addButton;
     }
 }
 

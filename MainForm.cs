@@ -7,17 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace FarmInterface
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private ItemContainer rootContainer = new ItemContainer("root", 0.00m, 0, 0, 0, 0, 0);
         private FarmPanel farmPanel;
 
 
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
@@ -71,18 +72,27 @@ namespace FarmInterface
                 // Implement the logic to delete the selectedUnit from its parent
                 // Update the TreeView
 
-                if (selectedUnit.Parent != null)
+                if(selectedUnit == rootContainer)
+                {
+                    // Special case for root container: clear its children
+                    if (selectedUnit is ItemContainer container)
+                    {
+                        container.Children.Clear();
+                    }
+                }
+                else
                 {
                     selectedUnit.Delete(selectedUnit);
                 }
 
                 treeView.Nodes.Remove(treeView.SelectedNode);
+                treeView.Nodes.Clear();
+                PopulateTreeView(rootContainer, treeView.Nodes);
 
                 farmPanel.Invalidate();
             }
 
-            treeView.Nodes.Clear();
-            PopulateTreeView(rootContainer, treeView.Nodes);
+
         }
 
         private void editButton_Click(object sender, EventArgs e)
@@ -97,6 +107,43 @@ namespace FarmInterface
                 treeView.SelectedNode.Text = selectedUnit.Name;
             }
             farmPanel.Invalidate();
+        }
+
+        private void treeExpand_CheckedChanged(object sender, EventArgs e)
+        {
+            // If the check box is checked, expand all the tree nodes.
+            if (treeExpand.Checked == true)
+            {
+                treeView.ExpandAll();
+            }
+            else
+            {
+                // If the check box is not checked, collapse the first tree node.
+                treeView.CollapseAll();
+            }
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            if (treeView.SelectedNode != null && treeView.SelectedNode.Tag is ItemContainer selectedContainer)
+            {
+                // Open the form to add a new Item or ItemContainer
+                EditForm addForm = new EditForm();
+                if (addForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Create new element based on user input
+                    ElementalUnit newElement = addForm.CreatedElement;
+                    if (newElement != null)
+                    {
+                        selectedContainer.AddItem(newElement);
+
+                        // Update TreeView and FarmPanel
+                        treeView.Nodes.Clear();
+                        PopulateTreeView(rootContainer, treeView.Nodes);
+                        farmPanel.Invalidate();
+                    }
+                }
+            }
         }
     }
 }
