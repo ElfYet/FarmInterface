@@ -13,7 +13,7 @@ namespace FarmInterface
 {
     public partial class MainForm : Form
     {
-        private ItemContainer rootContainer = new ItemContainer("root", 0.00m, 0, 0, 0, 0, 0);
+        private ItemContainer rootContainer = new ItemContainer("Farm", 0.00m, 0, 0, 0, 0, 0);
         private FarmPanel farmPanel;
 
 
@@ -45,6 +45,8 @@ namespace FarmInterface
             treeView.Nodes.Clear();
             Testing.PopulateBarnTest(rootContainer);
             PopulateTreeView(rootContainer, treeView.Nodes);
+
+            farmPanel.DisplayLabels();
             farmPanel.Invalidate();
         }
 
@@ -89,6 +91,7 @@ namespace FarmInterface
                 treeView.Nodes.Clear();
                 PopulateTreeView(rootContainer, treeView.Nodes);
 
+                farmPanel.DisplayLabels();
                 farmPanel.Invalidate();
             }
 
@@ -106,6 +109,7 @@ namespace FarmInterface
                 // After editing, update the TreeView if necessary
                 treeView.SelectedNode.Text = selectedUnit.Name;
             }
+            farmPanel.DisplayLabels();
             farmPanel.Invalidate();
         }
 
@@ -140,6 +144,7 @@ namespace FarmInterface
                         // Update TreeView and FarmPanel
                         treeView.Nodes.Clear();
                         PopulateTreeView(rootContainer, treeView.Nodes);
+                        farmPanel.DisplayLabels();
                         farmPanel.Invalidate();
                     }
                 }

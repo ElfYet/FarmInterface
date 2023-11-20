@@ -39,5 +39,32 @@ namespace FarmInterface
                 }
             }
         }
+        public void DisplayLabels()
+        {
+            DisplayElementLabel(RootContainer);
+        }
+
+        private void DisplayElementLabel(ElementalUnit element)
+        {
+            if (element == null) return;
+
+            Label nameLabel = new Label
+            {
+                Text = element.Name,
+                AutoSize = true, // Automatically size the label to fit the text
+                Font = new Font("Arial", 8, FontStyle.Regular),
+                Location = new Point(element.LocationX, element.LocationY)
+            };
+
+            this.Controls.Add(nameLabel); // Add the label to the FarmPanel
+
+            if (element is ItemContainer container)
+            {
+                foreach (var child in container.Children)
+                {
+                    DisplayElementLabel(child);
+                }
+            }
+        }
     }
 }

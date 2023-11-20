@@ -36,6 +36,7 @@
             this.placeholderPanel = new System.Windows.Forms.Panel();
             this.treeExpand = new System.Windows.Forms.CheckBox();
             this.addButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -116,9 +117,21 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(299, 37);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 25);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Visualization";
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(999, 905);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.treeExpand);
             this.Controls.Add(this.editButton);
@@ -144,6 +157,7 @@
         private System.Windows.Forms.Panel placeholderPanel;
         private System.Windows.Forms.CheckBox treeExpand;
         private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Label label2;
     }
 }
 
